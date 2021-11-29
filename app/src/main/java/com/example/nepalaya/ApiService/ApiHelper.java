@@ -15,7 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiHelper<T> {
     private static ApiHelper helper;
     private static Retrofit retrofit;
-    private final String BASE_URL = "https://nepalayacafe.com.np/";
+    private final String BASE_URL = "https://nepalayarestro.com.np/";
 
     @TargetApi(Build.VERSION_CODES.GINGERBREAD)
     private ApiHelper() {

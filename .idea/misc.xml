@@ -1,9 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
-    <output url="file://$PROJECT_DIR$/build/classes" />
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/layout/activity_cart.xml" value="0.18020833333333333" />
+        <entry key="app/src/main/res/layout/activity_food_home.xml" value="0.18020833333333333" />
+        <entry key="app/src/main/res/layout/activity_food_menu.xml" value="0.18020833333333333" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1796875" />
+        <entry key="app/src/main/res/layout/activity_table.xml" value="0.1796875" />
+        <entry key="app/src/main/res/layout/completedorder.xml" value="0.1796875" />
+        <entry key="app/src/main/res/layout/custom_dialog.xml" value="0.1796875" />
+        <entry key="app/src/main/res/layout/custom_dialog_list.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/custom_foodmenu_layout.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/custom_pending.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/custom_table.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/customhomefood.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/dialog_addsone.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/dialog_exit.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/food_list_custom.xml" value="0.18020833333333333" />
+        <entry key="app/src/main/res/layout/foodhome.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_food__menu.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/imageholder_layout.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/item_shimmer.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/nav_header.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/orderlist.xml" value="0.18020833333333333" />
+        <entry key="app/src/main/res/layout/pending_order.xml" value="0.16" />
+        <entry key="app/src/main/res/layout/processingorder.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/progress_dialog.xml" value="0.1" />
+        <entry key="app/src/main/res/menu/draw_menu.xml" value="0.18020833333333333" />
+        <entry key="app/src/main/res/menu/main_menu.xml" value="0.18020833333333333" />
+      </map>
+    </option>
   </component>
-  <component name="ProjectType">
-    <option name="id" value="Android" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_15_PREVIEW" project-jdk-name="15" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
