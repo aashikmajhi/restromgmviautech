@@ -184,6 +184,7 @@ public class TableHome extends Fragment {
 
                 bd.putString("table_id", table_id);
                 bd.putInt("table_name", Integer.parseInt(table_name));
+//                bd.putString("table_name", table_name);
 
                 schedulePreference.setTableid(table_id);
 
