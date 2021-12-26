@@ -47,7 +47,7 @@ public class TableHome extends Fragment {
     Context context;
     int id;
     ArrayList<TableModel> tableModels;
-    String TableId, TableName;
+    String TableId, TableName, TableLocation;
     TableAdapter tableAdapter;
     RecyclerView table_recycleview;
     EditText searchViewtable;
@@ -145,9 +145,10 @@ public class TableHome extends Fragment {
                                     JSONObject jsnItems = jsonArray.getJSONObject(i);
                                     TableId = jsnItems.getString("TableId");
                                     TableName = jsnItems.getString("TableName");
+//                                    TableLocation = jsnItems.getString("Table_location");
 
 
-                                    tableModels.add(new TableModel(TableId, TableName));
+                                    tableModels.add(new TableModel(TableId, TableName, TableLocation));
                                 }
                                 tableAdapter = new TableAdapter(tableModels, getContext(), onClickListener);
                                 table_recycleview.setAdapter(tableAdapter);
@@ -175,7 +176,7 @@ public class TableHome extends Fragment {
     public void ShowDetail() {
         onClickListener = new OnClickListener() {
             @Override
-            public void onItemClick(String table_id, String table_name) {
+            public void onItemClick(String table_id, String table_name, String table_location) {
                 /*  FoodHome foodHome = new FoodHome();*/
 
                 Category_Menu category_menu = new Category_Menu();
@@ -184,7 +185,7 @@ public class TableHome extends Fragment {
 
                 bd.putString("table_id", table_id);
                 bd.putInt("table_name", Integer.parseInt(table_name));
-//                bd.putString("table_name", table_name);
+                bd.putString("table_location", table_location);
 
                 schedulePreference.setTableid(table_id);
 

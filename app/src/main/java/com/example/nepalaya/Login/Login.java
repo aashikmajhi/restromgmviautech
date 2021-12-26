@@ -4,37 +4,29 @@ import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.biometric.BiometricManager;
-import androidx.biometric.BiometricPrompt;
-import androidx.cardview.widget.CardView;
-import androidx.core.content.ContextCompat;
 
 import com.example.nepalaya.ApiService.APIService;
 import com.example.nepalaya.ApiService.ApiHelper;
 import com.example.nepalaya.MainActivity;
 import com.example.nepalaya.R;
 import com.example.nepalaya.SchedulePreference;
-import com.example.nepalaya.Table.TableHome;
 import com.example.nepalaya.utils.CallbackMessage;
 import com.example.nepalaya.utils.CustomDialogBox;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.gson.JsonElement;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.concurrent.Executor;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -48,10 +40,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Login extends AppCompatActivity {
+
+    private static final String LOG_TAG = "LogActivity";
+
     @SuppressLint("NonConstantResourceId")
     @NotEmpty(messageId = R.string.validation_field, order = 1)
     @BindView(R.id.etEmail)
-    EditText etemail;
+    TextInputEditText etemail;
 
 /*    @BindView(R.id.tv_shine)
     TextView tvShine;*/
@@ -61,11 +56,11 @@ public class Login extends AppCompatActivity {
     @SuppressLint("NonConstantResourceId")
     @NotEmpty(messageId = R.string.validation_field, order = 2)
     @BindView(R.id.etPassword)
-    EditText etpassword;
+    TextInputEditText etpassword;
 
     SchedulePreference mpref;
     String email, password, id, firstname, lastname, utech;
-    int profileImage;
+    String UserPictureURL;
 
     @SuppressLint("NonConstantResourceId")
     @BindView(R.id.loading_spinner)
@@ -100,6 +95,8 @@ public class Login extends AppCompatActivity {
     @OnClick(R.id.btn_login)
     public void btnClick() {
         if (FormValidator.validate(this, new SimpleErrorPopupCallback(getApplicationContext(), true))) {
+            switch (Log.d(LOG_TAG, "This is debug log")) {
+            }
             getData();
         }
     }
@@ -121,6 +118,7 @@ public class Login extends AppCompatActivity {
             @SuppressLint("ResourceAsColor")
             @Override
             public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
+//                Log.i("Response",response.body().toString());
                 JSONObject data = new JSONObject();
                 if (response.isSuccessful()) {
                     String responseValue = response.body().toString();
@@ -132,7 +130,7 @@ public class Login extends AppCompatActivity {
                         email = data.getString("email");
                         firstname = data.getString("firstname");
                         lastname = data.getString("lastname");
-                        // profileImage = Integer.parseInt(data.getString("picture"));
+//                        UserPictureURL = data.getString("UserPictureURL");
                         utech = data.getString("PowerBy");
 
                         // int id1 = Integer.parseInt(id);
@@ -142,7 +140,7 @@ public class Login extends AppCompatActivity {
                         mpref.setUserFirstname(firstname);
                         mpref.setUserLastName(lastname);
                         mpref.setPowerBy(utech);
-                        mpref.setProfilePictue(profileImage);
+                        mpref.setProfilePictue(UserPictureURL);
                         mpref.setUserLoggedInStatus(true);
                         etemail.setText(email);
                         etpassword.setText("");
@@ -160,10 +158,12 @@ public class Login extends AppCompatActivity {
                         frontendLogic();
 
                     } catch (JSONException e) {
-                        e.printStackTrace();
-                        //Toasty.custom(getApplicationContext(),"Please, check your email and password",null,R.color.blue,R.color.orange,Toasty.LENGTH_SHORT,false,true).show();
-                        Toasty.error(getApplicationContext(), "Please, check your email and password", Toasty.LENGTH_SHORT).show();
+//                        e.printStackTrace();
+//                        Log.e("MYAPP", "exception: " + e.getMessage());
+//                        Toasty.custom(getApplicationContext(),"Please, check your email and password" + e.getMessage(),null,R.color.blue,R.color.orange,Toasty.LENGTH_SHORT,false,true).show();
                         frontendLogic();
+//                        Log.e(e.getClass().getName(), e.getMessage(), e.getCause());
+                        Toasty.error(getApplicationContext(),"Please, check your email and password",Toasty.LENGTH_SHORT).show();
                     }
 
 
@@ -176,6 +176,7 @@ public class Login extends AppCompatActivity {
             @SuppressLint("ResourceAsColor")
             @Override
             public void onFailure(Call<JsonElement> call, Throwable t) {
+//                Log.e("Throwable", "exception: " + t.getMessage());
                 frontendLogic();
                 Toast.makeText(getApplicationContext(), "Please, check your internet connection!", Toast.LENGTH_SHORT).show();
             }

@@ -23,8 +23,8 @@ public class ApiHelper<T> {
                 .setLenient()
                 .create();
         OkHttpClient httpClient = new OkHttpClient.Builder()
-                .readTimeout(2, TimeUnit.MINUTES)
-                .connectTimeout(2, TimeUnit.MINUTES)
+                .readTimeout(20, TimeUnit.MINUTES)
+                .connectTimeout(20, TimeUnit.MINUTES)
                 .retryOnConnectionFailure(true)
                 .build();
         retrofit = new Retrofit.Builder()

@@ -113,9 +113,9 @@ public class SchedulePreference {
 
     }
 
-    public void setProfilePictue(int pictue) {
+    public void setProfilePictue(String pictue) {
         this.mEditor = mSharedPreference.edit();
-        mEditor.putInt(PROFILE_PICTUE, pictue);
+        mEditor.putString(PROFILE_PICTUE, pictue);
         mEditor.apply();
     }
 
