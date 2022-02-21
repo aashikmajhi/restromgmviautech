@@ -3,12 +3,25 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/menu_background_color_state.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_cart.xml" value="0.18020833333333333" />
+        <entry key="app/src/main/res/layout/activity_expandable_demo.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_expandable_list.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_floor.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_floor_home.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_food_home.xml" value="0.18020833333333333" />
+        <entry key="app/src/main/res/layout/activity_food_menu.xml" value="0.18020833333333333" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1796875" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.18020833333333333" />
         <entry key="app/src/main/res/layout/activity_table.xml" value="0.2" />
-        <entry key="app/src/main/res/layout/completedorder.xml" value="0.18020833333333333" />
+        <entry key="app/src/main/res/layout/building.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/cancel_order.xml" value="0.18020833333333333" />
+        <entry key="app/src/main/res/layout/completedorder.xml" value="0.33" />
         <entry key="app/src/main/res/layout/custom_addones_detail.xml" value="0.1685185185185185" />
         <entry key="app/src/main/res/layout/custom_dialog.xml" value="0.18020833333333333" />
         <entry key="app/src/main/res/layout/custom_dialog_list.xml" value="0.18020833333333333" />
+        <entry key="app/src/main/res/layout/custom_floor.xml" value="0.22" />
         <entry key="app/src/main/res/layout/custom_foodmenu_layout.xml" value="0.1685185185185185" />
         <entry key="app/src/main/res/layout/custom_home.xml" value="0.1685185185185185" />
         <entry key="app/src/main/res/layout/custom_pending.xml" value="0.1685185185185185" />
@@ -17,13 +30,18 @@
         <entry key="app/src/main/res/layout/customhomefood.xml" value="0.18020833333333333" />
         <entry key="app/src/main/res/layout/dialog_addsone.xml" value="0.18020833333333333" />
         <entry key="app/src/main/res/layout/dialog_exit.xml" value="0.18020833333333333" />
+        <entry key="app/src/main/res/layout/floor.xml" value="0.25" />
         <entry key="app/src/main/res/layout/food_list_custom.xml" value="0.1685185185185185" />
         <entry key="app/src/main/res/layout/foodhome.xml" value="0.1685185185185185" />
         <entry key="app/src/main/res/layout/fragment_food__menu.xml" value="0.33" />
         <entry key="app/src/main/res/layout/imageholder_layout.xml" value="0.1685185185185185" />
         <entry key="app/src/main/res/layout/item_shimmer.xml" value="0.1685185185185185" />
+        <entry key="app/src/main/res/layout/location.xml" value="0.25" />
         <entry key="app/src/main/res/layout/nav_header.xml" value="0.18020833333333333" />
         <entry key="app/src/main/res/layout/orderlist.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/pending_order.xml" value="0.15648148148148147" />
+        <entry key="app/src/main/res/layout/table.xml" value="0.22" />
+        <entry key="app/src/main/res/menu/draw_menu.xml" value="0.18020833333333333" />
         <entry key="app/src/main/res/menu/main_menu.xml" value="0.18020833333333333" />
       </map>
     </option>

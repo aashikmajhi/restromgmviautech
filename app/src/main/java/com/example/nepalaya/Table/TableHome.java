@@ -1,8 +1,6 @@
 package com.example.nepalaya.Table;
 
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -24,7 +22,7 @@ import com.example.nepalaya.ApiService.ApiHelper;
 import com.example.nepalaya.CategoryList.Category_Menu;
 import com.example.nepalaya.R;
 import com.example.nepalaya.SchedulePreference;
-import com.example.nepalaya.Table.Listener.OnClickListener;
+import com.example.nepalaya.Table.Listener.TableOnClickListener;
 import com.google.firebase.database.annotations.Nullable;
 import com.google.gson.JsonElement;
 
@@ -45,14 +43,14 @@ public class TableHome extends Fragment {
     Call<JsonElement> call;
     SchedulePreference schedulePreference;
     Context context;
-    int id;
+    String id;
     ArrayList<TableModel> tableModels;
-    String TableId, TableName, TableLocation;
+    String TableId, TableName;
     TableAdapter tableAdapter;
     RecyclerView table_recycleview;
     EditText searchViewtable;
-    OnClickListener onClickListener;
-
+    TableOnClickListener tableOnClickListener;
+    String tbfloorid, floorID, floorIdfromFloorHome, floor_id;
     String tableidd;
 
 
@@ -63,12 +61,16 @@ public class TableHome extends Fragment {
 
         schedulePreference = new SchedulePreference(getContext());
 
-        id = Integer.parseInt(schedulePreference.getUserId()); // UNCHeck the value
+        id = schedulePreference.getUserId(); // UNCHeck the value
         table_recycleview = rootview.findViewById(R.id.table_recycleview);
 
 
+        tbfloorid = schedulePreference.getFloorid();
         tableidd = schedulePreference.gettableid();
         System.out.println("table id from sharedpreference" + tableidd);
+
+        Bundle bundle = getArguments();
+        floorIdfromFloorHome = bundle.getString("floor_id");
 
 
         if (tableidd != null) {
@@ -79,24 +81,23 @@ public class TableHome extends Fragment {
 
             Bundle bd = new Bundle();
 
+            bd.putString("floor_id", floor_id);
             bd.putString("table_id", tableidd);
-//            bd.putInt("table_name", Integer.parseInt(table_name));
 
 
-//                foodHome.setArguments(bd);
             category_menu.setArguments(bd);
 
             FragmentManager fragmentManager = getFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager != null ? fragmentManager.beginTransaction() : null;
             assert fragmentTransaction != null;
-            fragmentTransaction.replace(R.id.container, category_menu).addToBackStack("back").commit();
+//            fragmentTransaction.replace(R.id.container, category_menu).addToBackStack("back").commit();
         }
 
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(context);
         table_recycleview.setLayoutManager(mLayoutManager);
 
-        searchViewtable = rootview.findViewById(R.id.searchedit);
+        searchViewtable = rootview.findViewById(R.id.floorsearchedit);
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         searchViewtable.addTextChangedListener(new TextWatcher() {
@@ -116,6 +117,9 @@ public class TableHome extends Fragment {
 
             }
         });
+        Bundle bd = getArguments();
+        floorID = bd.getString("floor_id");
+
         getData();
         ShowDetail();
 
@@ -124,7 +128,7 @@ public class TableHome extends Fragment {
 
     public void getData() {
         APIService apiService = (APIService) ApiHelper.getInstance().getService(APIService.class);
-        call = apiService.TableList(id);
+        call = apiService.TableListbyFloorID(floorIdfromFloorHome);
         call.enqueue(new Callback<JsonElement>() {
             @Override
             public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
@@ -143,14 +147,13 @@ public class TableHome extends Fragment {
                                 tableModels = new ArrayList<>();
                                 for (int i = 0; i < jsonArray.length(); i++) {
                                     JSONObject jsnItems = jsonArray.getJSONObject(i);
-                                    TableId = jsnItems.getString("TableId");
-                                    TableName = jsnItems.getString("TableName");
-//                                    TableLocation = jsnItems.getString("Table_location");
+                                    TableId = jsnItems.getString("tableid");
+                                    TableName = jsnItems.getString("tablename");
 
 
-                                    tableModels.add(new TableModel(TableId, TableName, TableLocation));
+                                    tableModels.add(new TableModel(TableId, TableName));
                                 }
-                                tableAdapter = new TableAdapter(tableModels, getContext(), onClickListener);
+                                tableAdapter = new TableAdapter(tableModels, getContext(), tableOnClickListener);
                                 table_recycleview.setAdapter(tableAdapter);
 
                             }
@@ -174,19 +177,18 @@ public class TableHome extends Fragment {
     }
 
     public void ShowDetail() {
-        onClickListener = new OnClickListener() {
+        tableOnClickListener = new TableOnClickListener() {
             @Override
-            public void onItemClick(String table_id, String table_name, String table_location) {
+            public void onItemClick(String table_id, String table_name) {
                 /*  FoodHome foodHome = new FoodHome();*/
 
                 Category_Menu category_menu = new Category_Menu();
 
                 Bundle bd = new Bundle();
 
+                bd.putString("floor_id", floorID);
                 bd.putString("table_id", table_id);
                 bd.putInt("table_name", Integer.parseInt(table_name));
-                bd.putString("table_location", table_location);
-
                 schedulePreference.setTableid(table_id);
 
 //                foodHome.setArguments(bd);

@@ -8,7 +8,9 @@ import org.json.JSONArray;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface APIService {
 
@@ -27,9 +29,17 @@ public interface APIService {
     Call<JsonElement> FoodList(@Field("id") String id,
                                @Field("CategoryID") String Categoryid);
 
+//    @FormUrlEncoded
+    @GET("V1/getFloorList")
+    Call<JsonElement> FloorList();
+
+    @FormUrlEncoded
+    @POST("V1/getTableListByFloorId")
+    Call<JsonElement> TableListbyFloorID(@Field("floor_id") String id);
+
     @FormUrlEncoded
     @POST("V1/tablelist")
-    Call<JsonElement> TableList(@Field("id") int id);
+    Call<JsonElement> TableList(@Field("id") String id);
 
     @FormUrlEncoded
     @POST("V1/foodcart")

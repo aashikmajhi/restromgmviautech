@@ -14,7 +14,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nepalaya.R;
-import com.example.nepalaya.Table.Listener.OnClickListener;
+import com.example.nepalaya.Table.Listener.TableOnClickListener;
 
 import java.util.ArrayList;
 
@@ -28,9 +28,9 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.MYViewHolder
     ArrayList<TableModel> tableModels, tableModelsfilter;
     Context context;
     TableFilter tableFilter;
-    OnClickListener listener;
+    TableOnClickListener listener;
 
-    public TableAdapter(ArrayList<TableModel> tableModels, Context context, OnClickListener listener) {
+    public TableAdapter(ArrayList<TableModel> tableModels, Context context, TableOnClickListener listener) {
         this.tableModels = tableModels;
         this.tableModelsfilter = tableModels;
         this.context = context;
@@ -57,16 +57,15 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.MYViewHolder
 
                 String table_id = tableModel.getTable_id();
                 String table_name = tableModel.getTable_name();
-                String table_location = tableModel.getTable_location();
-                getDetail(table_id, table_name, table_location);
+                getDetail(table_id, table_name);
 
             }
         });
 
     }
 
-    public void getDetail(String table_id, String table_name, String table_location) {
-        listener.onItemClick(table_id, table_name, table_location);
+    public void getDetail(String table_id, String table_name) {
+        listener.onItemClick(table_id, table_name);
 
     }
 

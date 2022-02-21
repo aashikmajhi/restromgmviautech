@@ -13,6 +13,7 @@ public class SchedulePreference {
     public static final String PROFILE_PICTUE = "picture";
     public static final String POWER_BY = "powerby";
     public static final String USER_LOGIN_STATUS = "login_status";
+    public static final String floorid = "floorid";
     public static final String tableid = "tableid"; // for cart check
     public static final String checkupdate = "checkupdate"; // for cart check
     public static final String orderid = "orderid"; //Order id for updates of cart
@@ -68,6 +69,17 @@ public class SchedulePreference {
 
     public String getUserLastname() {
         return mSharedPreference.getString(USER_LASTNAME, null);
+    }
+
+    public void setFloorid(String id) {
+        this.mEditor = mSharedPreference.edit();
+        mEditor.putString(floorid, id);
+        mEditor.apply();
+    }
+
+    public String getFloorid() {
+        return mSharedPreference.getString(floorid, null);
+
     }
 
     public void setTableid(String id) {

@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
+
     <androidx.cardview.widget.CardView
         android:id="@+id/clicklayer_table"
         android:layout_width="match_parent"
@@ -106,24 +107,6 @@
                         android:text="Total Amount:"
                         android:textSize="15sp"
                         android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/location"
-                        android:layout_marginTop="30dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="80dp"
-                        android:layout_toEndOf="@+id/pending_item"
-                        android:text="Location" />
-
-                    <TextView
-                        android:id="@+id/location_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/location"
-                        android:layout_marginLeft="90dp"
-                        android:layout_toEndOf="@+id/amount"
-                        android:text="First Floor" />
 
 
                 </RelativeLayout>

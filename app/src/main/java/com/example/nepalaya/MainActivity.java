@@ -1,5 +1,9 @@
 package com.example.nepalaya;
 
+import static com.example.nepalaya.R.id.nav_logout;
+import static com.example.nepalaya.R.id.nav_menu;
+import static com.example.nepalaya.R.id.nav_order_list;
+
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,23 +20,15 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.example.nepalaya.Cart.Cart;
-
+import com.example.nepalaya.Floor.FloorHome;
 import com.example.nepalaya.Login.Login;
 import com.example.nepalaya.OrderList.OrderList;
 import com.example.nepalaya.Table.TableHome;
 import com.example.nepalaya.utils.CallbackMessage;
 import com.example.nepalaya.utils.CustomDialogBox;
 import com.google.android.material.navigation.NavigationView;
-import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-
-import static android.R.drawable.sym_def_app_icon;
-import static com.example.nepalaya.R.id.baseline;
-import static com.example.nepalaya.R.id.nav_logout;
-import static com.example.nepalaya.R.id.nav_menu;
-import static com.example.nepalaya.R.id.nav_order_list;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -71,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tvname.setText(schedulePreference.getUserFirstname() + " " + schedulePreference.getUserLastname());
         tvemail.setText(schedulePreference.getUserEmail());
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, new TableHome(), "Food Menu").addToBackStack(null).addToBackStack(null).commitAllowingStateLoss();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, new FloorHome(), "Food Menu").addToBackStack(null).addToBackStack(null).commitAllowingStateLoss();
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -139,7 +135,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
             case nav_menu:
-                getSupportFragmentManager().beginTransaction().replace(R.id.container,new TableHome()).addToBackStack(null).addToBackStack(null).commitAllowingStateLoss();
+                getSupportFragmentManager().beginTransaction().replace(R.id.container,new FloorHome()).addToBackStack(null).addToBackStack(null).commitAllowingStateLoss();
 
                 break;
 
@@ -158,6 +154,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             drawerLayout.closeDrawer(GravityCompat.START);
         }
         else
-            finish();
+            super.onBackPressed();
     }
 }
